@@ -14,7 +14,7 @@ For charts `x-axis` there are two options:
 
 2. `CategoryXAxis`: Uses the index (order) of data entries hence data entries will be shown with equal distance. (Useful to remove the market gaps.)
 
-```
+```dart
 Chart(
       chartId: 'line-chart',
       mainRenderer: LineRenderer(
@@ -47,7 +47,7 @@ Updating...
 Can customize the colors of the `Renderer` by giving a `Config` object to it
 and specify colors and sizes there.
 
-```
+```dart
 lineConfig: LineConfig(
             tooltipConfig: TooltipConfig(),
             color: Colors.amber,
@@ -62,7 +62,7 @@ lineConfig: LineConfig(
 
 Give the `LineRenderer` a `config` and enable tooltip there:
 
-```
+```dart
 Chart(
       mainRenderer: LineRenderer(
         ...
@@ -78,7 +78,7 @@ Chart(
 
 Define a `CrossHairBehaviour` to chart's `behaviours` param
 
-```
+```dart
 Chart(
       ...
       behaviors: [
@@ -94,7 +94,7 @@ Chart(
 Just keep a reference on the `DataSeries` given to the `Renderer` and  
 update the chart widget. The chart will animate in the new data.
 
-```
+```dart
 Chart(
           ...
           mainRenderer: LineRenderer(
@@ -121,12 +121,12 @@ Updating example...
 To connect multiple charts to each other so their x-range zoom and scroll be synced:
 1. Create an object of `SharedRange`:
 
-```
+```dart
 final _sharedRange = SharedRange();
 ```
 
 2. Give the same `SharedRange` created to the charts:
-```
+```dart
 Chart(
       chartId: 'chart_1',
       sharedRange: _sharedRange,
@@ -143,13 +143,13 @@ Chart(
 To connect the charts `CrossHair` functionality, one chart must be the main chart.
 
 1. Create an object of `PositionNotifier`:
-```
+```dart
 final _positionNotifier = PositionNotifier();
 ```
 
 2. Give it as `positionNotifier` to the main chart and as `positionListener` to the
    other charts:
-```
+```dart
 Chart(
       chartId: 'main_chart',
       positionNotifier: positionNotifier,
