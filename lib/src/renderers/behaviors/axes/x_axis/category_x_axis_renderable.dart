@@ -31,7 +31,6 @@ const List<int> indexIntervals = [
   10000000000, // 5 sec
 ];
 
-
 /// Renderable class for painting x-axis of type category
 class CategoryXAxisRenderable<T extends BaseEntry>
     extends BehaviorRendererable {
@@ -101,7 +100,6 @@ class CategoryXAxisRenderable<T extends BaseEntry>
     ui.Size size,
     double lineX,
   ) {
-
     final date = DateTime.fromMillisecondsSinceEpoch(lineXFactor);
 
     final textSpan = TextSpan(

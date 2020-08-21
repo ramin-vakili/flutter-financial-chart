@@ -94,8 +94,7 @@ class _CategoryChartPageState extends State<CategoryChartPage> {
                                             ohlcValues,
                                             id: 'CANDLE',
                                             config: CandleConfig(
-                                              tooltipConfig:
-                                                  TooltipConfig(enabled: true),
+                                              tooltipConfig: TooltipConfig(),
                                               lastTickMarkerConfig:
                                                   LastTickMarkerConfig(
                                                       dotEnabled: true),
@@ -106,9 +105,12 @@ class _CategoryChartPageState extends State<CategoryChartPage> {
                                                 ohlcValues,
                                                 id: 'OHLC',
                                                 config: OHLCConfig(
+                                                  tooltipConfig:
+                                                      TooltipConfig(),
                                                   lastTickMarkerConfig:
                                                       LastTickMarkerConfig(
-                                                          dotEnabled: true),
+                                                    dotEnabled: true,
+                                                  ),
                                                 ),
                                               )
                                             : LineRenderer(
@@ -116,14 +118,13 @@ class _CategoryChartPageState extends State<CategoryChartPage> {
                                                 id: 'LINE',
                                                 lineConfig: LineConfig(
                                                     tooltipConfig:
-                                                        TooltipConfig(
-                                                      enabled: true,
-                                                    ),
+                                                        TooltipConfig(),
                                                     thickness: 1,
                                                     hasArea: true,
                                                     lastTickMarkerConfig:
                                                         LastTickMarkerConfig(
-                                                            dotEnabled: true)),
+                                                      dotEnabled: true,
+                                                    )),
                                               ),
                                   ),
                                 ),

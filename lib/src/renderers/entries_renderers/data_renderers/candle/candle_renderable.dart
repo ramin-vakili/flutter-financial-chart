@@ -7,13 +7,12 @@ import 'package:flutter_financial_chart/src/chart/position_notifier.dart';
 import 'package:flutter_financial_chart/src/models/animation_info.dart';
 import 'package:flutter_financial_chart/src/models/data_series.dart';
 import 'package:flutter_financial_chart/src/models/models.dart';
+import 'package:flutter_financial_chart/src/renderers/entries_renderers/data_renderers/candle/ohlc_mode_renderable.dart';
 
-import '../bar_mode_renderable.dart';
-
-class CandleRendererable extends BarModeRenderable<OHLCEntry> {
+class CandleRendererable extends OHLCModeRendererable {
   CandleRendererable({
     @required DataSeries<OHLCEntry> visibleEntries,
-    @required IndexedData<BaseEntry> lastEntry,
+    @required IndexedData<OHLCEntry> lastEntry,
     @required int leftXFactor,
     @required int rightXFactor,
     bool isIndependentChart,
@@ -85,24 +84,9 @@ class CandleRendererable extends BarModeRenderable<OHLCEntry> {
   }
 
   @override
-  String getTooltipText(IndexedData<OHLCEntry> entry) =>
-      'O:${entry.e.open.toStringAsFixed(2)}    C:${entry.e.close.toStringAsFixed(2)}\nH:${entry.e.high.toStringAsFixed(2)}    L:${entry.e.low.toStringAsFixed(2)}';
-
-  @override
   Offset getTooltipAnchorPoint(IndexedData<OHLCEntry> entry) => Offset(
       xFactorToX(renderer.xFactorDecider.getXFactor(entry)),
       valueToY(max(entry.e.open, entry.e.close)));
-
-  @override
-  Rect getEntryTouchArea(IndexedData<OHLCEntry> entry) {
-    calculateEntriesWidth(visibleEntries);
-    return Rect.fromLTRB(
-      xFactorToX(renderer.xFactorDecider.getXFactor(entry)) - entryHalfWidth,
-      valueToY(max(entry.e.open, entry.e.close)),
-      xFactorToX(renderer.xFactorDecider.getXFactor(entry)) + entryHalfWidth,
-      valueToY(min(entry.e.open, entry.e.close)),
-    );
-  }
 
   void _drawCandleRect(Canvas canvas, double candleX, double candleHalfWidth,
       double candleTop, double candleBottom) {

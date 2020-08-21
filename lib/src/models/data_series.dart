@@ -15,7 +15,7 @@ class DataSeries<E> with IterableMixin<IndexedData<E>> {
       : _indexedEntries = list;
 
   /// Initializes a [DataSeries] from a list.
-  DataSeries.fromList(List<E> es):_indexedEntries = <IndexedData<E>>[] {
+  DataSeries.fromList(List<E> es) : _indexedEntries = <IndexedData<E>>[] {
     addAll(es);
   }
 

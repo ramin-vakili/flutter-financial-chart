@@ -6,14 +6,14 @@ import 'package:flutter_financial_chart/src/models/animation_info.dart';
 import 'package:flutter_financial_chart/src/models/data_series.dart';
 import 'package:flutter_financial_chart/src/models/models.dart';
 
-import '../bar_mode_renderable.dart';
+import 'ohlc_mode_renderable.dart';
 import 'ohlc_mode_renderer.dart';
 import 'ohlc_renderer.dart';
 
-class OHLCRendererable extends BarModeRenderable<OHLCEntry> {
+class OHLCRendererable extends OHLCModeRendererable {
   OHLCRendererable({
     @required DataSeries<OHLCEntry> visibleEntries,
-    @required IndexedData<BaseEntry> lastEntry,
+    @required IndexedData<OHLCEntry> lastEntry,
     @required int leftXFactor,
     @required int rightXFactor,
     bool isIndependentChart,
@@ -22,7 +22,7 @@ class OHLCRendererable extends BarModeRenderable<OHLCEntry> {
     OHLCRenderer renderer,
   })  : _paint = Paint()
           ..color = config.positiveColor
-          ..strokeWidth = 1.4
+          ..strokeWidth = 1.2
           ..style = PaintingStyle.fill,
         super(
           visibleEntries: visibleEntries,
@@ -85,24 +85,9 @@ class OHLCRendererable extends BarModeRenderable<OHLCEntry> {
   }
 
   @override
-  String getTooltipText(IndexedData<OHLCEntry> entry) =>
-      'O:${entry.e.open.toStringAsFixed(2)}    C:${entry.e.close.toStringAsFixed(2)}\nH:${entry.e.high.toStringAsFixed(2)}    L:${entry.e.low.toStringAsFixed(2)}';
-
-  @override
   Offset getTooltipAnchorPoint(IndexedData<OHLCEntry> entry) => Offset(
       xFactorToX(renderer.xFactorDecider.getXFactor(entry)),
       valueToY(entry.e.high));
-
-  @override
-  Rect getEntryTouchArea(IndexedData<OHLCEntry> entry) {
-    calculateEntriesWidth(visibleEntries);
-    return Rect.fromLTRB(
-      xFactorToX(renderer.xFactorDecider.getXFactor(entry)) - entryHalfWidth,
-      valueToY(entry.e.high),
-      xFactorToX(renderer.xFactorDecider.getXFactor(entry)) + entryHalfWidth,
-      valueToY(entry.e.low),
-    );
-  }
 
   void _drawOHLCOpenCloseLines(Canvas canvas, double candleX,
       double ohlcHalfWidth, double closeY, double openY) {
