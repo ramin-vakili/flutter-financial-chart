@@ -193,6 +193,7 @@ class _ChartState extends State<Chart> with TickerProviderStateMixin {
   }
 
   void _autoScrollByNewTick(Chart oldWidget) {
+    if (!_isIndependentChart) return;
     _panningAnimationController.value = _sharedRange.rightXFactor.toDouble();
     _panningAnimationController.animateTo(
       (_sharedRange.rightXFactor +
@@ -201,7 +202,7 @@ class _ChartState extends State<Chart> with TickerProviderStateMixin {
                 widget.mainRenderer.entries.last,
               ))
           .toDouble(),
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 900),
       curve: Curves.easeOut,
     );
   }

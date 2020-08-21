@@ -31,7 +31,6 @@ abstract class DataRendererable<T extends BaseEntry>
     DataRenderer renderer,
     this.config,
   })  : _paint = Paint()
-          ..color = lineColor ?? Colors.yellow
           ..style = PaintingStyle.fill
           ..strokeWidth = 0.5,
         super(
@@ -61,6 +60,7 @@ abstract class DataRendererable<T extends BaseEntry>
         renderer.xFactorDecider
                 .getXFactor((renderer as EntriesRenderer).entries.last) <
             rightXFactor) {
+      _paint.color = config.lastTickMarkerConfig.labelBackgroundColor;
       double animatedValue;
       if (prevLastEntry != null) {
         animatedValue = ui.lerpDouble(prevLastEntry.e.value,
@@ -77,8 +77,6 @@ abstract class DataRendererable<T extends BaseEntry>
           xFactorToX(renderer.xFactorDecider.getXFactor(lastVisibleEntry));
 
       final animatedValueY = valueToY(animatedValue);
-
-      _paint.color = Colors.yellow;
 
       _drawDashedLine(
           canvas, lastVisibleEntryX, animatedValueY, size, animatedValue);
@@ -148,7 +146,10 @@ abstract class DataRendererable<T extends BaseEntry>
             canvas,
             Offset(
               anchorPoint.dx - textPainter.width / 2,
-              anchorPoint.dy - textPainter.height - tooltipPadding - tooltipArrowSize,
+              anchorPoint.dy -
+                  textPainter.height -
+                  tooltipPadding -
+                  tooltipArrowSize,
             ),
           );
         }
@@ -222,9 +223,8 @@ abstract class DataRendererable<T extends BaseEntry>
         y + config.lastTickMarkerConfig.labelHeight / 2);
     labelPath.lineTo(size.width - config.lastTickMarkerConfig.labelWidth, y);
 
-    _paint.color = config.lastTickMarkerConfig.labelBackgroundColor;
-
-    canvas.drawPath(labelPath, _paint);
+    canvas.drawPath(labelPath,
+        Paint()..color = config.lastTickMarkerConfig.labelBackgroundColor);
 
     final textStyle = TextStyle(
       color: config.lastTickMarkerConfig.textColor,

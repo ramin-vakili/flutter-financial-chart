@@ -5,12 +5,12 @@ import 'indicator_charts/indicator.dart';
 import 'indicator_charts/indicator_frame.dart';
 import 'mock_api.dart';
 
-class ChartPage2 extends StatefulWidget {
+class CategoryChartPage extends StatefulWidget {
   @override
-  _ChartPage2State createState() => _ChartPage2State();
+  _CategoryChartPageState createState() => _CategoryChartPageState();
 }
 
-class _ChartPage2State extends State<ChartPage2> {
+class _CategoryChartPageState extends State<CategoryChartPage> {
   DataSeries<OHLCEntry> ohlcValues = DataSeries<OHLCEntry>();
 
   List<TickEntry> maValues = [];
