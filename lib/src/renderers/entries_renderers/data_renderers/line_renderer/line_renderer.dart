@@ -48,7 +48,7 @@ class LineRenderer extends DataRenderer<BaseEntry> {
 /// Line renderer config
 class LineConfig extends DataRendererConfig {
   const LineConfig({
-    this.thickness = 2,
+    this.thickness = 1,
     this.color = Colors.black54,
     this.hasArea = false,
     TooltipConfig tooltipConfig,

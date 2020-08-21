@@ -67,7 +67,7 @@ class _ChartState extends State<Chart> with TickerProviderStateMixin {
 
   bool _isIndependentChart;
 
-  /// Each pixel represents this number of ms
+  /// Each pixel represents this number of xFactors
   int _prevXFactorInPx;
   int _leftXFactor = 0;
 
@@ -116,7 +116,6 @@ class _ChartState extends State<Chart> with TickerProviderStateMixin {
       final xFactorDelta =
           widget.xAxis.getXFactorDelta(secondLastEntry, lastEntry);
 
-      // TODO: Move inside if statement
       _sharedRange.initialize(
         minXFactor: widget.xAxis.getXFactor(widget.mainRenderer.entries.first),
         maxXFactor: widget.xAxis.getXFactor(widget.mainRenderer.entries.last),
@@ -272,7 +271,7 @@ class _ChartState extends State<Chart> with TickerProviderStateMixin {
               chartId: widget.chartId,
               status: TouchStatus.tapUp,
             );
-          } else {
+          } else if (widget.mainRenderer != null){
             _positionNotifier?.updatePosition(
               chartId: widget.chartId,
               x: details.localPosition.dx,
