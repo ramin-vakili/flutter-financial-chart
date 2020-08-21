@@ -152,8 +152,10 @@ class _ChartPage2State extends State<ChartPage2> {
                             chartId: 'XAXIS_CHART',
                             sharedRange: _sharedRange,
                             positionListener: _positionNotifier,
-                            behaviors: [CrossHairBehavior()],
-                            yAxis: YAxis(),
+                            behaviors: [
+                              CrossHairBehavior(
+                                  config: CrossHairConfig(hasTimeLabel: true))
+                            ],
                             xAxis: CategoryXAxis(
                                 config: CategoryXAxisConfig(hasLabel: true)),
                           ),

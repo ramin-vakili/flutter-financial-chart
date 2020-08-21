@@ -13,6 +13,9 @@ import 'package:flutter_financial_chart/src/util/helpers.dart';
 import '../entries_renderable.dart';
 import '../entries_renderer.dart';
 
+const tooltipPadding = 10.0;
+const tooltipArrowSize = 8.0;
+
 /// Holds common options for current tick indicator, etc
 /// Options be implemented here and each subclass of this will paint its own data
 abstract class DataRendererable<T extends BaseEntry>
@@ -80,7 +83,7 @@ abstract class DataRendererable<T extends BaseEntry>
       _drawDashedLine(
           canvas, lastVisibleEntryX, animatedValueY, size, animatedValue);
 
-      _drawLabel(
+      _drawTickIndicatorLabel(
         animatedValue.toStringAsFixed(4),
         canvas,
         animatedValueY,
@@ -114,26 +117,39 @@ abstract class DataRendererable<T extends BaseEntry>
         final anchorPoint = getTooltipAnchorPoint(entry);
         final tooltipText = getTooltipText(entry);
 
-        final size = 96 * animationsInfo.toolTipPercent;
+        final textPainter = _getTextPainter(tooltipText, canvas);
 
-        Paint tooltipPaint = Paint()..color = Colors.white70.withOpacity(0.5);
+        final width = textPainter.width * animationsInfo.toolTipPercent;
+        final height = textPainter.height * animationsInfo.toolTipPercent;
 
-        canvas.drawRRect(
-            RRect.fromRectAndRadius(
+        Paint tooltipPaint = Paint()
+          ..color = config.tooltipConfig.backgroundColor.withOpacity(0.7);
+
+        final tooltipRect = RRect.fromRectAndRadius(
                 Rect.fromCenter(
-                    center: Offset(anchorPoint.dx, anchorPoint.dy - size / 2),
-                    width: size,
-                    height: size),
-                Radius.circular(4)),
-            tooltipPaint);
+                    center: Offset(
+                      anchorPoint.dx,
+                      anchorPoint.dy -
+                          tooltipPadding -
+                          tooltipArrowSize -
+                          height / 2,
+                    ),
+                    width: width,
+                    height: height),
+                Radius.circular(4))
+            .inflate(tooltipPadding);
+
+        canvas.drawRRect(tooltipRect, tooltipPaint);
+
+        canvas.drawPath(getTrianglePath(anchorPoint), tooltipPaint);
 
         if (animationsInfo.toolTipPercent > 0.9) {
-          _drawTextOn(
-            tooltipText,
+          textPainter.paint(
             canvas,
-            anchorPoint.dx - size / 4,
-            anchorPoint.dy - size * 3 / 4,
-            size: Size(size, size),
+            Offset(
+              anchorPoint.dx - textPainter.width / 2,
+              anchorPoint.dy - textPainter.height - tooltipPadding - tooltipArrowSize,
+            ),
           );
         }
 
@@ -191,7 +207,8 @@ abstract class DataRendererable<T extends BaseEntry>
     }
   }
 
-  void _drawLabel(String text, Canvas canvas, double y, Size size) {
+  void _drawTickIndicatorLabel(
+      String text, Canvas canvas, double y, Size size) {
     Path labelPath = Path();
 
     labelPath.moveTo(size.width - config.lastTickMarkerConfig.labelWidth, y);
@@ -223,22 +240,26 @@ abstract class DataRendererable<T extends BaseEntry>
     textPainter.paint(canvas, Offset(size.width - 50, y - 5));
   }
 
-  void _drawTextOn(
+  TextPainter _getTextPainter(
     String text,
-    Canvas canvas,
-    double x,
-    double y, {
-    Color color = Colors.black87,
-    Size size = const Size(64, 64),
+    Canvas canvas, {
+    Size size = const Size(96, 96),
   }) {
-    final textStyle = TextStyle(
-      color: color,
-      fontSize: 10,
-    );
-    final textSpan = TextSpan(text: text, style: textStyle);
-    final textPainter =
-        TextPainter(text: textSpan, textDirection: TextDirection.ltr);
+    final textSpan =
+        TextSpan(text: text, style: config.tooltipConfig.labelStyle);
+    final textPainter = TextPainter(
+        text: textSpan,
+        textDirection: TextDirection.ltr,
+        textAlign: TextAlign.center);
     textPainter.layout(minWidth: size.width, maxWidth: size.height);
-    textPainter.paint(canvas, Offset(x, y));
+    return textPainter;
+  }
+
+  Path getTrianglePath(Offset offset) {
+    return Path()
+      ..moveTo(offset.dx, offset.dy)
+      ..lineTo(offset.dx - tooltipArrowSize / 2, offset.dy - tooltipArrowSize)
+      ..lineTo(offset.dx + tooltipArrowSize / 2, offset.dy - tooltipArrowSize)
+      ..lineTo(offset.dx, offset.dy);
   }
 }

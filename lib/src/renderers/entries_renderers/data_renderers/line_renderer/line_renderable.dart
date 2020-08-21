@@ -130,8 +130,8 @@ class LinesRendererable extends DataRendererable<BaseEntry> {
         Offset(0, 0),
         Offset(0, size.height),
         [
-          Colors.white.withOpacity(0.3),
-          Colors.white.withOpacity(0.01),
+          Colors.blueGrey.withOpacity(0.3),
+          Colors.blueGrey.withOpacity(0.01),
         ],
       );
 

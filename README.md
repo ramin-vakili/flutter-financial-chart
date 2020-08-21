@@ -2,7 +2,7 @@
 
 A Flutter package to visualize financial data.
 
-![flutter_financial_chart](screen_shots/flutter_financial_chart.png)
+![flutter_financial_chart](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/flutter_financial_chart.png)
 
 ## Getting Started
 

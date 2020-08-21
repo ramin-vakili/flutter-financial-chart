@@ -33,9 +33,10 @@ class YAxis extends BehaviorRenderer {
 }
 
 class YAxisConfig extends AxisConfig {
-  const YAxisConfig({bool hasLabel, TextStyle labelStyle})
+  const YAxisConfig({bool hasLabel, TextStyle labelStyle, Color lineColor})
       : super(
           hasLabel: hasLabel,
           labelStyle: labelStyle,
+          lineColor: lineColor,
         );
 }

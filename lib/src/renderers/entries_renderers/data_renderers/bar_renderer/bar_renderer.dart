@@ -43,7 +43,7 @@ class BarRenderer extends DataRenderer<BaseEntry> {
 
 class BarConfig extends DataRendererConfig {
   const BarConfig({
-    this.positiveColor = Colors.white70,
+    this.positiveColor = Colors.green,
     this.negativeColor = const Color(0xFFba4e4e),
     TooltipConfig tooltipConfig,
     LastTickMarkerConfig lastTickMarkerConfig,

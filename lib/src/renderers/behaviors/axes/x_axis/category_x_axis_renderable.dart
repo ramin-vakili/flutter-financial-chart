@@ -46,7 +46,7 @@ class CategoryXAxisRenderable<T extends BaseEntry>
     AxisConfig config,
     this.mainVisibleEntries,
   )   : _paint = Paint()
-          ..color = Colors.white12
+          ..color = config.lineColor
           ..style = PaintingStyle.stroke
           ..isAntiAlias = true
           ..strokeWidth = 0.5,
@@ -101,16 +101,12 @@ class CategoryXAxisRenderable<T extends BaseEntry>
     ui.Size size,
     double lineX,
   ) {
-    final textStyle = TextStyle(
-      color: Colors.white38,
-      fontSize: 10,
-    );
 
     final date = DateTime.fromMillisecondsSinceEpoch(lineXFactor);
 
     final textSpan = TextSpan(
       text: '${dateFormat.format(date)}',
-      style: textStyle,
+      style: (config as AxisConfig).labelStyle,
     );
     final textPainter = TextPainter(
       text: textSpan,

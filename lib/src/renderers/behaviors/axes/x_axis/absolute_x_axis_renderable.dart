@@ -44,7 +44,7 @@ class XAxisRenderable extends BehaviorRendererable {
     bool isIndependentChart,
     AxisConfig config,
   )   : _paint = Paint()
-          ..color = Colors.white12
+          ..color = config.lineColor
           ..style = PaintingStyle.stroke
           ..isAntiAlias = true
           ..strokeWidth = 0.5,
@@ -98,16 +98,11 @@ class XAxisRenderable extends BehaviorRendererable {
     ui.Size size,
     double lineX,
   ) {
-    final textStyle = TextStyle(
-      color: Colors.white38,
-      fontSize: 10,
-    );
-
     final date = DateTime.fromMillisecondsSinceEpoch(lineXFactor);
 
     final textSpan = TextSpan(
       text: '${dateFormat.format(date)}',
-      style: textStyle,
+      style: (config as AxisConfig).labelStyle,
     );
     final textPainter = TextPainter(
       text: textSpan,
@@ -117,6 +112,8 @@ class XAxisRenderable extends BehaviorRendererable {
 
     textPainter.layout(minWidth: 50, maxWidth: 100);
     textPainter.paint(
-        canvas, Offset(lineX - textPainter.width / 2, size.height - 20));
+      canvas,
+      Offset(lineX - textPainter.width / 2, size.height - textPainter.height),
+    );
   }
 }

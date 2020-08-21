@@ -46,7 +46,7 @@ class YAxisRenderable extends BehaviorRendererable {
     bool isIndependentChart,
     YAxisConfig config,
   )   : _paint = Paint()
-          ..color = Colors.white12
+          ..color = config.lineColor
           ..style = PaintingStyle.stroke
           ..isAntiAlias = true
           ..strokeWidth = 0.5,

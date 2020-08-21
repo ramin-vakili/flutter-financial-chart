@@ -8,9 +8,15 @@ abstract class DataRendererConfig {
 }
 
 class TooltipConfig {
-  const TooltipConfig({this.enabled = true});
+  const TooltipConfig({
+    this.enabled = true,
+    this.backgroundColor = const Color(0xFF5F6178),
+    this.labelStyle = const TextStyle(color: Colors.white, fontSize: 10),
+  });
 
   final bool enabled;
+  final Color backgroundColor;
+  final TextStyle labelStyle;
 }
 
 class LastTickMarkerConfig {

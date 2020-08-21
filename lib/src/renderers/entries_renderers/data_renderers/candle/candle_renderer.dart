@@ -43,7 +43,7 @@ class CandleConfig extends OHLCConfig {
   const CandleConfig({
     Color positiveColor,
     Color negativeColor,
-    this.lineColor = Colors.white70,
+    this.lineColor = Colors.blueGrey,
     TooltipConfig tooltipConfig,
     LastTickMarkerConfig lastTickMarkerConfig,
   }) : super(

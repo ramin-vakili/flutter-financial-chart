@@ -120,14 +120,14 @@ class BarRendererable extends BarModeRenderable<BaseEntry> {
             RRect.fromRectAndRadius(
                 Rect.fromLTRB(xPos - entryHalfWidth, yPos,
                     xPos + entryHalfWidth, valueToY(0)),
-                Radius.circular(2)),
+                Radius.circular(1)),
             _paint);
       } else {
         canvas.drawRRect(
             RRect.fromRectAndRadius(
                 Rect.fromLTRB(xPos - entryHalfWidth, valueToY(0),
                     xPos + entryHalfWidth, yPos),
-                Radius.circular(2)),
+                Radius.circular(1)),
             Paint()..color = (config as BarConfig).negativeColor);
       }
     } else {
@@ -135,7 +135,7 @@ class BarRendererable extends BarModeRenderable<BaseEntry> {
           RRect.fromRectAndRadius(
               Rect.fromLTRB(xPos - entryHalfWidth, yPos, xPos + entryHalfWidth,
                   size.height),
-              Radius.circular(2)),
+              Radius.circular(1)),
           _paint);
     }
   }

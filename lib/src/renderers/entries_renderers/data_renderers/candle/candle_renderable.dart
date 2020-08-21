@@ -86,7 +86,7 @@ class CandleRendererable extends BarModeRenderable<OHLCEntry> {
 
   @override
   String getTooltipText(IndexedData<OHLCEntry> entry) =>
-      'Open:${entry.e.open}\nClose:${entry.e.close}\nHigh:${entry.e.high}\nLow:${entry.e.low}';
+      'O:${entry.e.open.toStringAsFixed(2)}    C:${entry.e.close.toStringAsFixed(2)}\nH:${entry.e.high.toStringAsFixed(2)}    L:${entry.e.low.toStringAsFixed(2)}';
 
   @override
   Offset getTooltipAnchorPoint(IndexedData<OHLCEntry> entry) => Offset(
