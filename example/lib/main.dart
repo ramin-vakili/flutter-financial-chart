@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_financial_chart/flutter_financial_chart.dart';
 
-import 'category_chart_page.dart';
-
 void main() {
   runApp(MyApp());
 }

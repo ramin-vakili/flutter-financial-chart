@@ -1,7 +1,7 @@
 name: flutter_financial_chart
-description: A Flutter package to visualize financial data
+description: A Flutter chart package to visualize financial data.
 version: 0.0.2
-homepage: https://github.com/soeldiablo
+homepage: https://github.com/soeldiablo/flutter-financial-chart
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

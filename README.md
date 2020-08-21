@@ -1,6 +1,16 @@
 # Flutter Financial Chart
 
-A Flutter package to visualize financial data.
+A Flutter chart package to visualize financial data.
+
+### Features
+- Line, Bar, OHLC, CandleStick chart
+- Multiple DataSeries on a single chart (Useful for on chart technical indicators)
+- Zoom and pan
+- Tooltip
+- Cross-hair
+- Live update
+- Animation for tool-tip, live update, y-axis range change.
+- SMA, MACD and RSI indicators
 
 ![flutter_financial_chart](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/flutter_financial_chart.png)
 
