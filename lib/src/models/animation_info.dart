@@ -10,6 +10,7 @@ class AnimationsInfo {
 
   double get crossHairPercent => _crossHairPercent;
 
+  /// Updates given animation values.
   void updateValues({
     double newTickPercent,
     double toolTipPercent,

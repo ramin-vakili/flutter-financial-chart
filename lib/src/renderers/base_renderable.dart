@@ -28,17 +28,17 @@ abstract class BaseRendererable {
   /// Indicates whether this frame of drawing chart belongs to a dependent chart or not
   final bool isIndependentChart;
 
-  /// Animating values for [maxValue]
-  double animatingMaxValue;
-  double animatingMinValue;
+  /// Animated values in a frame
+  double animatedMaxValue;
+  double animatedMinValue;
 
   /// Value difference in a frame
-  double get animatingValueDifference => animatingMaxValue - animatingMinValue;
+  double get animatedValueDifference => animatedMaxValue - animatedMinValue;
 
   /// Touch info for long press and tap
   final TouchInfo touchInfo;
 
-  /// Right XFactor of the frame
+  /// XFactor of this frame
   final int rightXFactor;
   final int leftXFactor;
 
@@ -51,8 +51,8 @@ abstract class BaseRendererable {
   /// Converts value to y considering the padding
   double valueToY(double value) => _valueToYWithPadding(
         value,
-        animatingMaxValue,
-        animatingMinValue,
+        animatedMaxValue,
+        animatedMinValue,
       );
 
   /// Converts XFactor to x coordinate
@@ -90,9 +90,9 @@ abstract class BaseRendererable {
 
   /// Converts y coordinate to value considering the padding
   double yToValue(double y) =>
-      animatingMinValue -
+      animatedMinValue -
       (((y - topPadding - verticalDrawingRange) / verticalDrawingRange) *
-          animatingValueDifference);
+          animatedValueDifference);
 
   /// Set the variables up and paint the frame by calling [onPaint]
   /// The sub-classes should call their [onPaint] based on the their own
@@ -105,8 +105,8 @@ abstract class BaseRendererable {
     double animatingMaxValue,
   }) {
     canvasSize = size;
-    this.animatingMaxValue = animatingMaxValue;
-    this.animatingMinValue = animatingMinValue;
+    this.animatedMaxValue = animatingMaxValue;
+    this.animatedMinValue = animatingMinValue;
   }
 
   /// Paints this frame on the canvas

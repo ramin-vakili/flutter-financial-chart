@@ -10,7 +10,7 @@ abstract class BaseRenderer {
   XFactorDecider mXFactorDecider;
 
   /// Indicated whether we are in absolute or category mode on x-range,
-  /// Helps x range conversions,
+  /// Helps in x-range conversions,
   XFactorDecider get xFactorDecider => mXFactorDecider;
 
   void setXFactorDecider(XFactorDecider xFactorDecider) =>

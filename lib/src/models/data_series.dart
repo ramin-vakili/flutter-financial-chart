@@ -2,12 +2,19 @@ import 'dart:collection';
 
 typedef Item<E, T> = T Function(IndexedData<E> e);
 
+/// A data structure to handle indices of data entries.
+///
+/// Suitable for sorted list of data entries.
+///
+/// Sorted lis of [T] can be added to the start or to the end of the [DataSeries]
 class DataSeries<E> with IterableMixin<IndexedData<E>> {
   DataSeries() : _indexedEntries = <IndexedData<E>>[];
 
+  /// Initializes a [DataSeries] from an already created list of [IndexedData].
   DataSeries.fromIndexedList(List<IndexedData<E>> list)
       : _indexedEntries = list;
 
+  /// Initializes a [DataSeries] from a list.
   DataSeries.fromList(List<E> es):_indexedEntries = <IndexedData<E>>[] {
     addAll(es);
   }
@@ -19,16 +26,20 @@ class DataSeries<E> with IterableMixin<IndexedData<E>> {
   int _endIndex = -1;
   int _startIndex = 0;
 
+  /// Adds the element [e] to the end of the data series.
   void add(E e) => _indexedEntries.add(IndexedData(++_endIndex, e));
 
+  /// Adds a list of [E] elements to the end of the data series.
   void addAll(List<E> es) {
     for (final e in es) {
       add(e);
     }
   }
 
+  /// Adds the element [e] to the beginning of the data series.
   void prepend(E e) => _indexedEntries.insert(0, IndexedData(--_startIndex, e));
 
+  /// Adds a list of [E] elements to the beginning of the data series.
   void prependAll(List<E> es) {
     // TODO: Improve later
     for (int i = es.length - 1; i >= 0; i--) {
@@ -36,7 +47,7 @@ class DataSeries<E> with IterableMixin<IndexedData<E>> {
     }
   }
 
-  bool get isEmpty => _indexedEntries.isEmpty; //_startIndex > _endIndex;
+  bool get isEmpty => _indexedEntries.isEmpty;
 
   bool get isNotEmpty => !isEmpty;
 
@@ -47,6 +58,7 @@ class DataSeries<E> with IterableMixin<IndexedData<E>> {
   DataSeries<E> sublist(int startIndex, int endIndex) =>
       DataSeries.fromIndexedList(_indexedEntries.sublist(startIndex, endIndex));
 
+  /// Exposes map functionality of List<[T]>.
   Iterable<T> map<T>(Item<E, T> item) =>
       _indexedEntries.map((IndexedData<E> e) => item(e));
 
@@ -55,6 +67,7 @@ class DataSeries<E> with IterableMixin<IndexedData<E>> {
     return _indexedEntries.removeLast();
   }
 
+  /// Creates a copy of this data series.
   DataSeries<E> clone() {
     final clonedSeries = DataSeries.fromIndexedList(_indexedEntries.toList());
     clonedSeries._startIndex = this._startIndex;
@@ -62,6 +75,7 @@ class DataSeries<E> with IterableMixin<IndexedData<E>> {
     return clonedSeries;
   }
 
+  /// Overridden by this class so the [IndexedData] items can be accessed using [index] operator.
   IndexedData<E> operator [](int index) => _indexedEntries[index];
 
   @override

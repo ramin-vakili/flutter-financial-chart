@@ -77,8 +77,8 @@ class CrossHairRenderable<T extends BaseEntry> extends BehaviorRendererable {
 
       // Horizontal line
       if (isIndependentChart) {
-        if (touchYValue <= animatingMaxValue &&
-            touchYValue >= animatingMinValue) {
+        if (touchYValue <= animatedMaxValue &&
+            touchYValue >= animatedMinValue) {
           canvas.drawLine(
             Offset(0, touchInfo.y),
             Offset(size.width, touchInfo.y),

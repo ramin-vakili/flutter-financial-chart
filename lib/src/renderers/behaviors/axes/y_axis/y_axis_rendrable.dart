@@ -66,14 +66,14 @@ class YAxisRenderable extends BehaviorRendererable {
   @override
   void onPaint({Canvas canvas, Size size, AnimationsInfo animationsInfo}) {
     double selectedInterval = valueIntervals.firstWhere((interval) {
-      final double distancePixel = valueToY(animatingMaxValue - interval);
+      final double distancePixel = valueToY(animatedMaxValue - interval);
       return distancePixel > 0.15 * size.height &&
           distancePixel > (config as YAxisConfig).labelStyle.fontSize * 2;
     }, orElse: () => valueIntervals.last);
 
-    double lineValue = animatingMaxValue - animatingMaxValue % selectedInterval;
+    double lineValue = animatedMaxValue - animatedMaxValue % selectedInterval;
 
-    while (lineValue >= animatingMinValue) {
+    while (lineValue >= animatedMinValue) {
       double lineY = valueToY(lineValue);
       _drawAxisLine(canvas, lineY);
 

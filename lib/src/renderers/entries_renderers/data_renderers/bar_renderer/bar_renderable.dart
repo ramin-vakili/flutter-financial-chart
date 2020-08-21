@@ -114,7 +114,7 @@ class BarRendererable extends BarModeRenderable<BaseEntry> {
     final xPos = xFactorToX(xFactor);
     final yPos = valueToY(value);
 
-    if (animatingMinValue < 0) {
+    if (animatedMinValue < 0) {
       if (value >= 0) {
         canvas.drawRRect(
             RRect.fromRectAndRadius(

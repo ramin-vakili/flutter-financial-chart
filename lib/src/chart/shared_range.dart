@@ -6,6 +6,7 @@ import 'package:flutter_financial_chart/flutter_financial_chart.dart';
 
 typedef OnRangeChange = Function(int xFactorInPx, int rightXFactor);
 
+///
 class SharedRange<T extends BaseEntry> extends ChangeNotifier {
   int _xFactorInPx = 4000;
   int _rightXFactor = 1;
