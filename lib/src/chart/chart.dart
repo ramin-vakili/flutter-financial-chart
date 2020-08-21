@@ -99,8 +99,13 @@ class _ChartState extends State<Chart> with TickerProviderStateMixin {
   void _setupSharedRange() {
     _sharedRange = widget.sharedRange ?? SharedRange();
     _sharedRange.addRangeListener((msInPx, rightXFactor) {
-      if (mounted) {
-        setState(() {});
+      if ((_panningAnimationController == null ||
+          !_panningAnimationController.isAnimating)) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) {
+            setState(() {});
+          }
+        });
       }
     });
     if (widget.mainRenderer != null && widget.mainRenderer.entries.isNotEmpty) {
@@ -193,7 +198,7 @@ class _ChartState extends State<Chart> with TickerProviderStateMixin {
   }
 
   void _autoScrollByNewTick(Chart oldWidget) {
-    if (!_isIndependentChart) return;
+    if (_panningAnimationController.isAnimating) return;
     _panningAnimationController.value = _sharedRange.rightXFactor.toDouble();
     _panningAnimationController.animateTo(
       (_sharedRange.rightXFactor +
