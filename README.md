@@ -31,7 +31,7 @@ Chart(
       yAxis: YAxis(),
     );
 ```
-![line_chart](screen_shots/line_chart.png)
+![line_chart](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/line_chart.png)
 
 Add a `AxisConfig`s to axes customize them:
 Updating...
@@ -56,7 +56,7 @@ lineConfig: LineConfig(
           )),
 ```
 
-![line_chart_config_colors](screen_shots/line_chart_config_colors.png)
+![line_chart_config_colors](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/line_chart_config_colors.png)
 
 ### 2. Enabling tooltip
 
@@ -72,7 +72,7 @@ Chart(
     );
 ```
 
-![line_chart_tooltip](screen_shots/line_chart_tooltip.png)
+![line_chart_tooltip](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/line_chart_tooltip.png)
 
 ### 3. Adding CrossHair behaviour
 
@@ -88,7 +88,7 @@ Chart(
     );
 ```
 
-![line_chart_cross_hair](screen_shots/line_chart_cross_hair.png)
+![line_chart_cross_hair](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/line_chart_cross_hair.png)
 
 ### 4. Live update
 Just keep a reference on the `DataSeries` given to the `Renderer` and  

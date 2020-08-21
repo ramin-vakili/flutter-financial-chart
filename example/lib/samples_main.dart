@@ -20,7 +20,10 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(),
-        body: SampleLineChart(),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SampleLineChart(),
+        ),
       ),
     );
   }
