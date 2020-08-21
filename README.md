@@ -6,7 +6,7 @@ A Flutter package to visualize financial data.
 
 </br>
 
-![ffc](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/ffc.gif)
+![ffc](https://github.com/soeldiablo/flutter-financial-chart/raw/master/screen_shots/ffc.gif)
 
 ## Getting Started
 
