@@ -8,11 +8,11 @@ A Flutter chart package to visualize financial data.
 
 | Live update | Switch, tooltip, cross-hair|
 | ------------------ | ------------------ |
-| <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/live_update.gif" alt="live_update">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="tooltip_crosshair"> |
+| <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/live_update.gif" alt="live_update" width="300" height="400">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="tooltip_crosshair" width="300" height="400"> |
 
 | Zoom, scroll| Add/Remove dynamically|
 | ------------------ | ------------------ |
-| <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/zoom_scroll.gif" alt="Zoom & Scroll">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/add_remove_dynamically.gif" alt="add_remove"> |
+| <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/zoom_scroll.gif" alt="zoom_scroll" width="300" height="400">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/add_remove_dynamically.gif" alt="add_remove" width="300" height="400"> |
 
 ### Features
 - Line, Bar, OHLC, CandleStick chart
