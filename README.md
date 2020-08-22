@@ -2,13 +2,14 @@
 
 A Flutter chart package to visualize financial data.
 
+![Pub Version](https://img.shields.io/pub/v/flutter_financial_chart)
+
 <br>
 
-<table><tr>
-<td><img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/live_update.gif" alt="Live update"></td>
-<td><img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="Tooltip & Cross-hair"></td>
-<td><img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/zoom_scroll.gif" alt="Zoom & Scroll"></td>
-</tr></table>
+| | |  |
+| ------------------ | ------------------ | ------------------ |
+| <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/live_update.gif" alt="live_update">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="tooltip_crosshair">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/zoom_scroll.gif" alt="Zoom & Scroll">  |
+| | |  |
 
 ### Features
 - Line, Bar, OHLC, CandleStick chart
@@ -208,8 +209,9 @@ Available indicators for now:
 
 ### 8. Adding data markers
 updating...
+
 ### 9. Road map
-- Polishing the painting part
-- More control for customizing colors and sizes through `configs`
-- More technical indicators
+- [ ] Polishing the painting part
+- [ ] More control for customizing colors and sizes through `configs`
+- [ ] More technical indicators
 
