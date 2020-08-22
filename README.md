@@ -6,7 +6,7 @@ A Flutter chart package to visualize financial data.
 
 <table><tr>
 <td><img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/live_update.gif" alt="Live update"></td>
-<td><img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="Tooltip & Cross-hair"></td><
+<td><img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="Tooltip & Cross-hair"></td>
 <td><img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/zoom_scroll.gif" alt="Zoom & Scroll"></td>
 </tr></table>
 
@@ -20,8 +20,7 @@ A Flutter chart package to visualize financial data.
 - Animation for tool-tip, live update, y-axis range change.
 - SMA, MACD and RSI indicators
 
-
-</br>
+<br>
 
 ## Getting Started
 
@@ -29,9 +28,9 @@ A Flutter chart package to visualize financial data.
 A simple line chart:
 
 For charts `x-axis` there are two options:
-1. `AbsoluteXAxis`: Uses absolute date values of data entries to align them on x-axis
+1. `AbsoluteXAxis`: Uses absolute date values of data entries to align them on x-axis.
 
-2. `CategoryXAxis`: Uses the index (order) of data entries hence data entries will be shown with equal distance. (Useful to remove the market gaps.)
+2. `CategoryXAxis`: Uses the index (order) of data entries hence data entries will be shown with equal distance. (Useful to remove market close gaps.)
 
 ```dart
 Chart(
@@ -134,8 +133,21 @@ Chart(
           )
 ...
 ```
-### 5. Current tick indicators label
-Updating example...
+### 5. Last tick indicator
+Add and customize it using `Renderer`'s config:
+
+```
+CandleRenderer(
+      ...
+      config: CandleConfig(
+        lastTickMarkerConfig: LastTickMarkerConfig(
+           dotEnabled: true,
+           labelBackgroundColor: Colors.redAccent,
+         ),
+       ),
+ )
+```
+
 ### 6. Connecting multiple charts to each other
 To connect multiple charts to each other so their x-range zoom and scroll be synced:
 1. Create an object of `SharedRange`:

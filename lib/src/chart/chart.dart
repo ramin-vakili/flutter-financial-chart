@@ -271,7 +271,7 @@ class _ChartState extends State<Chart> with TickerProviderStateMixin {
               chartId: widget.chartId,
               status: TouchStatus.tapUp,
             );
-          } else if (widget.mainRenderer != null){
+          } else if (widget.mainRenderer != null) {
             _positionNotifier?.updatePosition(
               chartId: widget.chartId,
               x: details.localPosition.dx,
