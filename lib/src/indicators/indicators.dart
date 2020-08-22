@@ -88,7 +88,10 @@ class MovingAverage {
     return output;
   }
 
-  static DataSeries<TickEntry> rsi(DataSeries<BaseEntry> input, int period) {
+  static DataSeries<TickEntry> rsi(
+    DataSeries<BaseEntry> input, {
+    int period = 14,
+  }) {
     final MovingAverage averageGain = new MovingAverage(period);
     final MovingAverage averageLoss = new MovingAverage(period);
 
@@ -127,7 +130,11 @@ class MovingAverage {
   }
 
   static MacdPoints macd(
-      DataSeries<BaseEntry> input, int slow, int fast, int signal) {
+    DataSeries<BaseEntry> input, {
+    int slow = 7,
+    int fast = 20,
+    int signal = 4,
+  }) {
     final MovingAverage maSlow = new MovingAverage(slow);
     final MovingAverage maFast = new MovingAverage(fast);
     final MovingAverage maSignal = new MovingAverage(signal);

@@ -6,19 +6,21 @@ A Flutter chart package to visualize financial data.
 
 <br>
 
-| | |  |
-| ------------------ | ------------------ | ------------------ |
-| <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/live_update.gif" alt="live_update">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="tooltip_crosshair">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/zoom_scroll.gif" alt="Zoom & Scroll">  |
-| | |  |
+| Live update | Switch, tooltip, cross-hair|
+| ------------------ | ------------------ |
+| <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/live_update.gif" alt="live_update">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="tooltip_crosshair"> |
+| Zoom, scroll| Add/Remove dynamically|
+| <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/zoom_scroll.gif" alt="Zoom & Scroll">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/add_remove_dynamically.gif" alt="add_remove"> |
 
 ### Features
 - Line, Bar, OHLC, CandleStick chart
 - Multiple DataSeries on a single chart (Useful for on chart technical indicators)
+- Connecting x-axis zoom and scroll range of multiple charts
 - Zoom and pan
 - Tooltip
 - Cross-hair
 - Live update
-- Animation for tool-tip, live update, y-axis range change.
+- Animation for tool-tip, live update, y-axis range changes
 - SMA, MACD and RSI indicators
 
 <br>
@@ -137,7 +139,7 @@ Chart(
 ### 5. Last tick indicator
 Add and customize it using `Renderer`'s config:
 
-```
+```dart
 CandleRenderer(
       ...
       config: CandleConfig(
@@ -200,7 +202,35 @@ Chart(
 2. For adding indicator with different y-axis scale than the main chart we should
    connect them via a `SharedRange`.
 
-Updating...
+```dart
+class RSIChart extends StatelessWidget {
+  final dataSeries = DataSeries<TickEntry>.fromList(<TickEntry>[
+    DateTimeTick(DateTime(2020, 10, 10, 10, 10), 10),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 11), 12),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 12), 9.6),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 13), 10.2),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 14), 10.5),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 16), 9.9),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 17), 10.0),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 18), 10.1),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 19), 10.3),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 20), 11.5),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 21), 10.1),
+  ]);
+
+  @override
+  Widget build(BuildContext context) {
+    final rsi = MovingAverage.rsi(dataSeries, period: 8);
+
+    return Chart(
+      chartId: 'rsi-chart',
+      mainRenderer: LineRenderer(rsi, id: 'rsi-data'),
+      xAxis: CategoryXAxis(),
+      yAxis: YAxis(),
+    );
+  }
+}
+```
 
 Available indicators for now:
 - SMA (Simple Moving Average)

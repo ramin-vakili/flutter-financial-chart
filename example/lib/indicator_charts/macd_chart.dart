@@ -20,7 +20,12 @@ class MacdChart extends StatelessWidget {
   Widget build(BuildContext context) {
 //    final newData = barData.toList();
 
-    MacdPoints macdPoints = MovingAverage.macd(barData, 7, 20, 4);
+    MacdPoints macdPoints = MovingAverage.macd(
+      barData,
+      slow: 7,
+      fast: 20,
+      signal: 4,
+    );
 
     return Chart(
       chartId: "MACD_CHART",

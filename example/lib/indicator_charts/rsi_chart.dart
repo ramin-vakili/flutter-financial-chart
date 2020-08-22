@@ -19,7 +19,7 @@ class RsiChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final rsi = MovingAverage.rsi(entries, 14);
+    final rsi = MovingAverage.rsi(entries, period: 14);
     return Chart(
       chartId: "RSI_CHART",
       behaviors: [
