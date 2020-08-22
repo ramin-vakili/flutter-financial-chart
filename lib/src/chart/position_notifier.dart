@@ -10,6 +10,7 @@ typedef OnPosition = Function(
   TouchStatus status,
 );
 
+/// A change notifier to hold and notify charts about touch updates.
 class PositionNotifier extends ChangeNotifier {
   String _chartId;
   double _y;

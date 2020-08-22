@@ -29,13 +29,31 @@ class Chart extends StatefulWidget {
     this.yAxis,
   }) : super(key: key);
 
+  /// If the chart has a [EntriesRenderer] it should be passed as the [mainRenderer].
   final EntriesRenderer mainRenderer;
+
+  /// Secondary [EntriesRenderer]s.
+  ///
+  /// Are used to paint extra chart data on this [Chart].
   final List<EntriesRenderer> renderers;
+
+  /// List of chart's behaviours
   final List<BehaviorRenderer> behaviors;
+
+  /// If set is used to connect and sync multiple chart's x-range zoom and scroll.
+  ///
+  /// The charts which are connected to each other must have the same [XAxis] type.
   final SharedRange sharedRange;
+
+  /// If set will be used to connect cross-hair functionality of multiple charts.
+  ///
+  /// If set this chart will act as the main chart.
   final PositionNotifier positionNotifier;
+
+  /// If set this chart will act as the secondary chart for the chart that this [PositionNotifier] is passed as [positionNotifier].
   final PositionNotifier positionListener;
 
+  /// Axes
   final XAxis xAxis;
   final YAxis yAxis;
 

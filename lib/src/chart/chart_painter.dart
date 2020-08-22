@@ -6,6 +6,8 @@ import 'package:flutter_financial_chart/src/models/animation_info.dart';
 import 'package:flutter_financial_chart/src/renderers/behaviors/behavior_renderer.dart';
 import 'package:flutter_financial_chart/src/renderers/entries_renderers/entries_renderer.dart';
 
+/// Responsible to pass canvas info to the [Renderer]s so they can paint their
+/// own data.
 class ChartPainter extends CustomPainter {
   ChartPainter({
     this.animatingMinValue,

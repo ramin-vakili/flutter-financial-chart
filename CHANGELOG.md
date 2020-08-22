@@ -1,3 +1,5 @@
+#### [0.0.5]
+* Updated documentation
 #### [0.0.4]
 * Elevation shadow for Bar and Candlestick
 * Updated documentation examples

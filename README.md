@@ -2,17 +2,18 @@
 
 A Flutter chart package to visualize financial data.
 
-![Pub Version](https://img.shields.io/pub/v/flutter_financial_chart)
+[![Pub Version](https://img.shields.io/pub/v/flutter_financial_chart)](https://pub.dev/packages/flutter_financial_chart)
 
 <br>
 
-| Live update | Switch, tooltip, cross-hair|
+| Live update | Switch, tooltip, cross-hair |
 | ------------------ | ------------------ |
-| <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/live_update.gif" alt="live_update" width="300" height="400">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="tooltip_crosshair" width="300" height="400"> |
+| <img src="https://github.com/ramin-vakili/flutter-financial-chart/raw/master/screen_shots/live_update.gif" alt="live_update" width="300" height="400">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/raw/master/screen_shots/tooltip_crosshair.gif" alt="tooltip_crosshair" width="300" height="400"> |
 
-| Zoom, scroll| Add/Remove dynamically|
+| Zoom, scroll | Add/Remove dynamically |
 | ------------------ | ------------------ |
-| <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/zoom_scroll.gif" alt="zoom_scroll" width="300" height="400">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/add_remove_dynamically.gif" alt="add_remove" width="300" height="400"> |
+| <img src="https://github.com/ramin-vakili/flutter-financial-chart/raw/master/screen_shots/zoom_scroll.gif" alt="zoom_scroll" width="300" height="400">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/raw/master/screen_shots/add_remove_dynamically.gif" alt="add_remove" width="300" height="400"> |
+
 
 ### Features
 - Line, Bar, OHLC, CandleStick chart
@@ -54,7 +55,8 @@ Chart(
       yAxis: YAxis(),
     );
 ```
-![line_chart](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/line_chart.png)
+
+<img src="https://github.com/ramin-vakili/flutter-financial-chart/raw/master/screen_shots/line_chart.png" alt="line_chart" width="400">
 
 Add a `AxisConfig`s to axes customize them:
 Updating...
@@ -79,7 +81,7 @@ lineConfig: LineConfig(
           )),
 ```
 
-![line_chart_config_colors](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/line_chart_config_colors.png)
+<img src="https://github.com/ramin-vakili/flutter-financial-chart/raw/master/screen_shots/line_chart_config_colors.png" alt="line_chart_config_colors" width="400">
 
 ### 2. Enabling tooltip
 
@@ -95,7 +97,7 @@ Chart(
     );
 ```
 
-![line_chart_tooltip](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/line_chart_tooltip.png)
+<img src="https://github.com/ramin-vakili/flutter-financial-chart/raw/master/screen_shots/line_chart_tooltip.png" alt="line_chart_tooltip" width="400">
 
 ### 3. Adding CrossHair behaviour
 
@@ -111,7 +113,7 @@ Chart(
     );
 ```
 
-![line_chart_cross_hair](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/line_chart_cross_hair.png)
+<img src="https://github.com/ramin-vakili/flutter-financial-chart/raw/master/screen_shots/line_chart_cross_hair.png" alt="line_chart_cross_hair" width="400">
 
 ### 4. Live update
 Just keep a reference on the `DataSeries` given to the `Renderer` and  
@@ -242,7 +244,7 @@ class LineChartWithMA extends StatelessWidget {
 
 ```
 
-![ma_indicator](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/ma_indicator.png)
+<img src="https://github.com/ramin-vakili/flutter-financial-chart/raw/master/screen_shots/ma_indicator.png" alt="ma_indicator" width="400">
 
 2. For adding indicator with different y-axis scale than the main chart we should
    connect them via a `SharedRange`.
