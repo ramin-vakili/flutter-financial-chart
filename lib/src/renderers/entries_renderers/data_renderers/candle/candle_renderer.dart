@@ -44,9 +44,11 @@ class CandleConfig extends OHLCConfig {
     Color positiveColor,
     Color negativeColor,
     this.lineColor = Colors.blueGrey,
+    this.elevation = 0,
     TooltipConfig tooltipConfig,
     LastTickMarkerConfig lastTickMarkerConfig,
-  }) : super(
+  })  : assert(elevation >= 0),
+        super(
           positiveColor: positiveColor,
           negativeColor: negativeColor,
           tooltipConfig: tooltipConfig,
@@ -54,4 +56,5 @@ class CandleConfig extends OHLCConfig {
         );
 
   final Color lineColor;
+  final double elevation;
 }

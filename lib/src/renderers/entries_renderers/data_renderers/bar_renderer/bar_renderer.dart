@@ -45,13 +45,16 @@ class BarConfig extends DataRendererConfig {
   const BarConfig({
     this.positiveColor = Colors.green,
     this.negativeColor = const Color(0xFFba4e4e),
+    this.elevation = 0,
     TooltipConfig tooltipConfig,
     LastTickMarkerConfig lastTickMarkerConfig,
-  }) : super(
+  })  : assert(elevation >= 0),
+        super(
           tooltipConfig: tooltipConfig,
           lastTickMarkerConfig: lastTickMarkerConfig,
         );
 
   final Color positiveColor;
   final Color negativeColor;
+  final double elevation;
 }

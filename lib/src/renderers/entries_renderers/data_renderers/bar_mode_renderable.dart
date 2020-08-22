@@ -5,15 +5,16 @@ import 'package:flutter_financial_chart/src/chart/position_notifier.dart';
 import 'package:flutter_financial_chart/src/models/animation_info.dart';
 import 'package:flutter_financial_chart/src/models/data_series.dart';
 import 'package:flutter_financial_chart/src/models/models.dart';
-import 'package:flutter_financial_chart/src/renderers/entries_renderers/data_renderers/data_renderer_config.dart';
 
 import 'data_renderable.dart';
 import 'data_renderer.dart';
+import 'data_renderer_config.dart';
+import 'elevation_mixin.dart';
 
 /// Base class for Renderables with bar mode data which need calculate the width of
 /// each entry like Candle, OHLC, Bar
 abstract class BarModeRenderable<T extends BaseEntry>
-    extends DataRendererable<T> {
+    extends DataRendererable<T> with ElevationMixin {
   BarModeRenderable({
     @required DataSeries<T> visibleEntries,
     @required IndexedData<T> lastEntry,

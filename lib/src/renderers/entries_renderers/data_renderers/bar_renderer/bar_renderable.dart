@@ -114,29 +114,32 @@ class BarRendererable extends BarModeRenderable<BaseEntry> {
     final xPos = xFactorToX(xFactor);
     final yPos = valueToY(value);
 
+    Rect barRect;
+    final BarConfig config = this.config;
+
     if (animatedMinValue < 0) {
       if (value >= 0) {
-        canvas.drawRRect(
-            RRect.fromRectAndRadius(
-                Rect.fromLTRB(xPos - entryHalfWidth, yPos,
-                    xPos + entryHalfWidth, valueToY(0)),
-                Radius.circular(1)),
-            _paint);
+        barRect = Rect.fromLTRB(
+            xPos - entryHalfWidth, yPos, xPos + entryHalfWidth, valueToY(0));
+        _paint.color = config.positiveColor;
       } else {
-        canvas.drawRRect(
-            RRect.fromRectAndRadius(
-                Rect.fromLTRB(xPos - entryHalfWidth, valueToY(0),
-                    xPos + entryHalfWidth, yPos),
-                Radius.circular(1)),
-            Paint()..color = (config as BarConfig).negativeColor);
+        barRect = Rect.fromLTRB(
+            xPos - entryHalfWidth, valueToY(0), xPos + entryHalfWidth, yPos);
+        _paint.color = config.negativeColor;
       }
     } else {
-      canvas.drawRRect(
-          RRect.fromRectAndRadius(
-              Rect.fromLTRB(xPos - entryHalfWidth, yPos, xPos + entryHalfWidth,
-                  size.height),
-              Radius.circular(1)),
-          _paint);
+      barRect = Rect.fromLTRB(
+          xPos - entryHalfWidth, yPos, xPos + entryHalfWidth, size.height);
+      _paint.color = config.positiveColor;
     }
+
+    if (config.elevation > 0) {
+      drawElevationOnBar(
+        canvas: canvas,
+        barRect: barRect,
+        elevation: config.elevation,
+      );
+    }
+    canvas.drawRect(barRect, _paint);
   }
 }

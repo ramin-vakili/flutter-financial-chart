@@ -1,6 +1,7 @@
 import 'dart:math';
-import 'dart:ui';
+import 'dart:ui' as ui;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_financial_chart/flutter_financial_chart.dart';
 import 'package:flutter_financial_chart/src/chart/position_notifier.dart';
@@ -88,12 +89,30 @@ class CandleRendererable extends OHLCModeRendererable {
       xFactorToX(renderer.xFactorDecider.getXFactor(entry)),
       valueToY(max(entry.e.open, entry.e.close)));
 
-  void _drawCandleRect(Canvas canvas, double candleX, double candleHalfWidth,
-      double candleTop, double candleBottom) {
-    canvas.drawRect(
-        Rect.fromLTRB(candleX - candleHalfWidth, candleTop,
-            candleX + candleHalfWidth, candleBottom),
-        _paint);
+  void _drawCandleRect(
+    Canvas canvas,
+    double candleX,
+    double candleHalfWidth,
+    double candleTop,
+    double candleBottom,
+  ) {
+    final candleRect = Rect.fromLTRB(
+      candleX - candleHalfWidth,
+      candleTop,
+      candleX + candleHalfWidth,
+      candleBottom,
+    );
+
+    final double elevation = (config as CandleConfig).elevation;
+
+    if (elevation > 0) {
+      drawElevationOnBar(
+        canvas: canvas,
+        barRect: candleRect,
+        elevation: elevation,
+      );
+    }
+    canvas.drawRect(candleRect, _paint);
   }
 
   void _drawLastCandle(
@@ -109,7 +128,7 @@ class CandleRendererable extends OHLCModeRendererable {
     if (prevLast != null &&
         renderer.xFactorDecider.getXFactor(prevLast) ==
             renderer.xFactorDecider.getXFactor(lastEntry)) {
-      final animatedClose = lerpDouble(
+      final animatedClose = ui.lerpDouble(
         prevLast.e.close,
         lastEntry.e.close,
         newTickAnimationPercent,
