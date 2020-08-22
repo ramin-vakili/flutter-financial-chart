@@ -74,7 +74,9 @@ class MovingAverage {
   }
 
   static DataSeries<TickEntry> movingAverage(
-      DataSeries<BaseEntry> input, int period) {
+    DataSeries<BaseEntry> input, {
+    int period = 10,
+  }) {
     final MovingAverage ma = new MovingAverage(period);
 
     final DataSeries<TickEntry> output =

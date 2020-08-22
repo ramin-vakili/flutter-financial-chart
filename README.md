@@ -9,7 +9,9 @@ A Flutter chart package to visualize financial data.
 | Live update | Switch, tooltip, cross-hair|
 | ------------------ | ------------------ |
 | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/live_update.gif" alt="live_update">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="tooltip_crosshair"> |
+
 | Zoom, scroll| Add/Remove dynamically|
+| ------------------ | ------------------ |
 | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/zoom_scroll.gif" alt="Zoom & Scroll">  | <img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/add_remove_dynamically.gif" alt="add_remove"> |
 
 ### Features
@@ -199,6 +201,49 @@ Chart(
 1. For adding technical indicator which their y-axis scale is the same as the main chart
    We can add them by and more renderers to the chart's `renderers param
 
+```dart
+class LineChartWithMA extends StatelessWidget {
+  final dataSeries = DataSeries<TickEntry>.fromList(<TickEntry>[
+    DateTimeTick(DateTime(2020, 10, 10, 10, 10), 10),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 11), 12),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 12), 9.6),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 13), 10.2),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 14), 10.5),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 16), 9.9),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 17), 10.0),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 18), 10.1),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 19), 10.3),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 20), 11.5),
+    DateTimeTick(DateTime(2020, 10, 10, 10, 21), 10.1),
+  ]);
+
+  @override
+  Widget build(BuildContext context) {
+    final ma = MovingAverage.movingAverage(dataSeries, period: 5);
+
+    return Chart(
+      chartId: 'line-chart',
+      mainRenderer: LineRenderer(dataSeries, id: 'line-data', lineConfig: LineConfig(
+        color: Colors.black38,
+        thickness: 2,
+        hasArea: true
+      )),
+      renderers: [
+        LineRenderer(ma, id: 'MA-data', lineConfig: LineConfig(
+          color: Colors.red,
+          thickness: 1
+        )),
+      ],
+      xAxis: CategoryXAxis(),
+      yAxis: YAxis(),
+    );
+  }
+}
+
+```
+
+![line_chart_cross_hair](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/on_chart_indicator.png)
+
 2. For adding indicator with different y-axis scale than the main chart we should
    connect them via a `SharedRange`.
 
@@ -225,6 +270,8 @@ class RSIChart extends StatelessWidget {
     return Chart(
       chartId: 'rsi-chart',
       mainRenderer: LineRenderer(rsi, id: 'rsi-data'),
+      // Give the same SharedRange which is passed to the main chart
+      sharedRange: _sharedRange,
       xAxis: CategoryXAxis(),
       yAxis: YAxis(),
     );
