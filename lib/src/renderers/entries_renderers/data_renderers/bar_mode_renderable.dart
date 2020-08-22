@@ -12,7 +12,7 @@ import 'data_renderer_config.dart';
 import 'elevation_mixin.dart';
 
 /// Base class for Renderables with bar mode data which need calculate the width of
-/// each entry like Candle, OHLC, Bar
+/// each entry like Candle, OHLC, Bar.
 abstract class BarModeRenderable<T extends BaseEntry>
     extends DataRendererable<T> with ElevationMixin {
   BarModeRenderable({

@@ -6,6 +6,7 @@ import 'package:flutter_financial_chart/src/renderers/entries_renderers/data_ren
 
 import '../entries_renderer.dart';
 
+/// Renderers which show real chart's data such as Line, Bar, OHLC etc must sub-class from this class
 abstract class DataRenderer<T extends BaseEntry> extends EntriesRenderer<T> {
   DataRenderer(
     DataSeries<BaseEntry> entries,

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+/// Provides methods for painting elevation shadow on different painting elements.
 mixin ElevationMixin {
   void drawElevationOnBar({
     @required Canvas canvas,

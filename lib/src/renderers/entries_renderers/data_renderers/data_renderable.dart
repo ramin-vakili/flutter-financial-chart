@@ -16,8 +16,9 @@ import '../entries_renderer.dart';
 const tooltipPadding = 10.0;
 const tooltipArrowSize = 8.0;
 
-/// Holds common options for current tick indicator, etc
-/// Options be implemented here and each subclass of this will paint its own data
+/// Responsible for painting common options between different types of [DataRendererable]s
+///
+/// E.g: Tooltip, LastTickIndicator.
 abstract class DataRendererable<T extends BaseEntry>
     extends EntriesRendererable<T> {
   DataRendererable({
