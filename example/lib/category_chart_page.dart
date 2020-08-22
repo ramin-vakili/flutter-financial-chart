@@ -68,6 +68,10 @@ class _CategoryChartPageState extends State<CategoryChartPage> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
+                        Material(
+                          color: Colors.transparent,
+                          child: _buildTopButtons(),
+                        ),
                         Expanded(
                           flex: 4,
                           child: ohlcValues.length < 2
@@ -162,13 +166,6 @@ class _CategoryChartPageState extends State<CategoryChartPage> {
                           ),
                         )
                       ],
-                    ),
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Material(
-                        color: Colors.transparent,
-                        child: _buildTopButtons(),
-                      ),
                     ),
                   ],
                 )

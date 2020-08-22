@@ -2,6 +2,14 @@
 
 A Flutter chart package to visualize financial data.
 
+<br>
+
+<table><tr>
+<td><img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/live_update.gif" alt="Live update"></td>
+<td><img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/tooltip_crosshair.gif" alt="Tooltip & Cross-hair"></td><
+<td><img src="https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/zoom_scroll.gif" alt="Zoom & Scroll"></td>
+</tr></table>
+
 ### Features
 - Line, Bar, OHLC, CandleStick chart
 - Multiple DataSeries on a single chart (Useful for on chart technical indicators)
@@ -12,11 +20,8 @@ A Flutter chart package to visualize financial data.
 - Animation for tool-tip, live update, y-axis range change.
 - SMA, MACD and RSI indicators
 
-![flutter_financial_chart](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/flutter_financial_chart.png)
 
 </br>
-
-![ffc](https://github.com/soeldiablo/flutter-financial-chart/raw/master/screen_shots/ffc.gif)
 
 ## Getting Started
 
@@ -45,7 +50,7 @@ Chart(
       yAxis: YAxis(),
     );
 ```
-![line_chart](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/line_chart.png)
+![line_chart](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/line_chart.png)
 
 Add a `AxisConfig`s to axes customize them:
 Updating...
@@ -70,7 +75,7 @@ lineConfig: LineConfig(
           )),
 ```
 
-![line_chart_config_colors](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/line_chart_config_colors.png)
+![line_chart_config_colors](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/line_chart_config_colors.png)
 
 ### 2. Enabling tooltip
 
@@ -86,7 +91,7 @@ Chart(
     );
 ```
 
-![line_chart_tooltip](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/line_chart_tooltip.png)
+![line_chart_tooltip](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/line_chart_tooltip.png)
 
 ### 3. Adding CrossHair behaviour
 
@@ -102,7 +107,7 @@ Chart(
     );
 ```
 
-![line_chart_cross_hair](https://github.com/soeldiablo/flutter-financial-chart/blob/master/screen_shots/line_chart_cross_hair.png)
+![line_chart_cross_hair](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/line_chart_cross_hair.png)
 
 ### 4. Live update
 Just keep a reference on the `DataSeries` given to the `Renderer` and  
