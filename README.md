@@ -242,7 +242,7 @@ class LineChartWithMA extends StatelessWidget {
 
 ```
 
-![line_chart_cross_hair](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/on_chart_indicator.png)
+![ma_indicator](https://github.com/ramin-vakili/flutter-financial-chart/blob/master/screen_shots/ma_indicator.png)
 
 2. For adding indicator with different y-axis scale than the main chart we should
    connect them via a `SharedRange`.
