@@ -94,12 +94,6 @@ class BarRendererable extends BarModeRenderable<BaseEntry> {
   }
 
   @override
-  String getTooltipText(IndexedData<BaseEntry> entry) {
-    // TODO: implement getTooltipText
-    throw UnimplementedError();
-  }
-
-  @override
   Offset getTooltipAnchorPoint(IndexedData<BaseEntry> entry) {
     // TODO: implement getTooltipAnchorPoint
     throw UnimplementedError();

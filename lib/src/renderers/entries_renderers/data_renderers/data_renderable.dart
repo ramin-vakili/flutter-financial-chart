@@ -162,7 +162,8 @@ abstract class DataRendererable<T extends BaseEntry>
     }
   }
 
-  String getTooltipText(IndexedData<T> entry);
+  String getTooltipText(IndexedData<T> entry) =>
+      '(${entry.e.value.toStringAsFixed(4)})';
 
   Offset getTooltipAnchorPoint(IndexedData<T> entry);
 

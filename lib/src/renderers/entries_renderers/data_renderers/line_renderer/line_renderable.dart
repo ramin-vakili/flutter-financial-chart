@@ -103,10 +103,6 @@ class LinesRendererable extends DataRendererable<BaseEntry> {
   }
 
   @override
-  String getTooltipText(IndexedData<BaseEntry> entry) =>
-      '(${entry.e.value.toStringAsFixed(4)})';
-
-  @override
   ui.Offset getTooltipAnchorPoint(IndexedData<BaseEntry> entry) => ui.Offset(
       xFactorToX(renderer.xFactorDecider.getXFactor(entry)),
       valueToY(entry.e.value));
